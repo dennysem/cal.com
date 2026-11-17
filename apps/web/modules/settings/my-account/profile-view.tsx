@@ -707,6 +707,10 @@ const ProfileForm = ({
             setFirstRender={setFirstRender}
             height="120px"
           />
+          <p className="mt-1 flex gap-1 text-sm text-subtle">
+            <InfoIcon className="mt-0.5 shrink-0" />
+            <span className="flex-1">{t("about_profile_hint")}</span>
+          </p>
         </div>
         {usersAttributes && usersAttributes?.length > 0 && (
           <div className="mt-6 flex flex-col">

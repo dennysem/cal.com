@@ -312,6 +312,10 @@ const GeneralView = ({ user, travelSchedules }: GeneralViewProps) => {
                 </>
               )}
             />
+            <div className="text-gray text-subtle mt-2 flex items-start text-xs">
+              <Icon name="info" className="mr-2 mt-0.25" />
+              {t("start_of_week_profile_hint")}
+            </div>
           </div>
 
           <SectionBottomActions align="end">

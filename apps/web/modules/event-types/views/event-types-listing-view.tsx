@@ -202,7 +202,9 @@ const Item = ({
         </small>
       ) : null}
       {!isManagedEventType && type.hidden && (
-        <span className="ml-2 text-gray-400 text-sm sm:hidden">{t("hidden")}</span>
+        <Badge variant="gray" className="ml-2" data-testid="hidden-badge">
+          {t("hidden")}
+        </Badge>
       )}
       {readOnly && (
         <Badge variant="gray" className="ml-2" data-testid="readonly-badge">
@@ -246,7 +248,9 @@ const Item = ({
                 </small>
               ) : null}
               {!isManagedEventType && type.hidden && (
-                <span className="ml-2 text-gray-400 text-sm sm:hidden">{t("hidden")}</span>
+                <Badge variant="gray" className="ml-2" data-testid="hidden-badge">
+                  {t("hidden")}
+                </Badge>
               )}
               {readOnly && (
                 <Badge variant="gray" className="ml-2" data-testid="readonly-badge">
@@ -595,27 +599,22 @@ export const InfiniteEventTypeList = ({
                         )}
                         <div className="flex items-center justify-between space-x-2 rtl:space-x-reverse">
                           {!isManagedEventType && (
-                            <>
-                              {type.hidden && <span className="text-gray-400 text-sm">{t("hidden")}</span>}
-                              <Tooltip
-                                content={
-                                  type.hidden ? t("show_eventtype_on_profile") : t("hide_from_profile")
-                                }>
-                                <div className="self-center rounded-md p-2">
-                                  <Switch
-                                    name="Hidden"
-                                    disabled={lockedByOrg}
-                                    checked={!type.hidden}
-                                    onCheckedChange={() => {
-                                      setHiddenMutation.mutate({
-                                        id: type.id,
-                                        hidden: !type.hidden,
-                                      });
-                                    }}
-                                  />
-                                </div>
-                              </Tooltip>
-                            </>
+                            <Tooltip
+                              content={type.hidden ? t("show_eventtype_on_profile") : t("hide_from_profile")}>
+                              <div className="self-center rounded-md p-2">
+                                <Switch
+                                  name="Hidden"
+                                  disabled={lockedByOrg}
+                                  checked={!type.hidden}
+                                  onCheckedChange={() => {
+                                    setHiddenMutation.mutate({
+                                      id: type.id,
+                                      hidden: !type.hidden,
+                                    });
+                                  }}
+                                />
+                              </div>
+                            </Tooltip>
                           )}
 
                           <ButtonGroup combined>
